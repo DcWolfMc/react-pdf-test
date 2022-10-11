@@ -1,0 +1,23 @@
+.ItemInfo{
+    display:flex;
+    flex-direction:row;
+    align-items:flex-start;
+    gap: 1rem;
+}
+.ItemInfoKey{
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight:bold;
+    text-transform: uppercase;
+    font-size: 0.625rem
+}
+.ItemInfoValue{
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight:regular;
+    text-transform: uppercase;
+    font-size: 0.625rem
+}
+.ItemInfoDateValue{
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight:regular;
+    font-size: 0.625rem
+}
