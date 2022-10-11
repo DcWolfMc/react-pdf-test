@@ -10,6 +10,7 @@ interface Props {
   sinistro: FormData;
 }
 export const VerWeb: React.FC<Props> = ({ sinistro }) => {
+  
   const createdTime = format(parseISO(sinistro.created), `dd/mm/yyyy`, {
     locale: ptBR,
   });
@@ -49,7 +50,7 @@ export const VerWeb: React.FC<Props> = ({ sinistro }) => {
           <div className="SubItemHeader">Localização</div>
           <div className="mapView">
             <div className="map">
-              <Map geom={sinistro.geom}/>
+              
             </div>
             <div className="MapSubtitles"></div>
           </div>
