@@ -22,3 +22,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+apiLocal.tsx
+callSinisterByIdLocal.tsx

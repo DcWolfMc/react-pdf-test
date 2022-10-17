@@ -9,8 +9,13 @@ interface Props {
 
 export const VictimTables: FunctionComponent<Props> = ({ data })  => {
   const list = data.map((victim) =>
-  <div>
-    <div className="SubItemHeader">Envolvido {data.indexOf(victim) + 1  } {victim.Nome} -{victim["Tipo de Pessoa"]}</div>
+  <div className="SubItemWrapper">
+    <div className="SubItemHeader">
+      <span><b>Envolvido { data.indexOf(victim) + 1 }</b></span>
+      <span>{ victim.Nome } </span>
+      <span><b>-{ victim["Tipo de Pessoa"] }</b></span>
+      
+    </div>
     <div className="SubItemInfo">
         <TableContents data={victim} keys={KEYS_VICTIM}/>
     </div>
@@ -18,7 +23,7 @@ export const VictimTables: FunctionComponent<Props> = ({ data })  => {
   )
   
   return (
-    <div className="SubItemInfoGroupsWrapper">
+    <div className="ListTables">
         {list}
     </div>
   );

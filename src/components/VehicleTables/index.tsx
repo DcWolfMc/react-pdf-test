@@ -8,18 +8,20 @@ interface Props {
 }
 
 export const VehicleTables: FunctionComponent<Props> = ({ data })  => {
-  const list = data.map((vehicle) =>
-  <div>
-    <div className="SubItemHeader">Veiculo { data.indexOf(vehicle) + 1 } Placa: {vehicle.Placa}</div>
-    <div className="SubItemInfo">
-        <TableContents data={vehicle} keys={KEYS_VEHICLE}/>
+  const list = data.map((vehicle:Vehicle) =>
+  <div className="SubItemWrapper">
+    <div className="SubItemHeader">
+      <span><b>Veiculo { data.indexOf(vehicle) + 1 } </b></span>
+      <span><b>Placa: </b> {vehicle.Placa}</span>
     </div>
+    <TableContents data={vehicle} keys={KEYS_VEHICLE}/>
   </div>
+    
   )
   
   return (
-    <div className="SubItemInfoGroupsWrapper">
-        {list}
+    <div className="ListTables">
+      {list}
     </div>
   );
 };

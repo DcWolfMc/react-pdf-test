@@ -25,15 +25,17 @@
   gap: 1rem;
 }
 .Content {
-  margin-top: 25%;
+  margin-top: 10%;
   flex: 1;
+  display: flex;
+  width: 100%;
 }
 .Container {
   flex: 1;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  
+  align-items: center;
 }
 .MainItemWrapper {
   border: 1.5px double orange;
@@ -43,17 +45,60 @@
   display:flex;
   flex-direction: column;
   gap:1rem;
-  margin: 0.675em
+  margin: 0.675em;
+  width: 65vw;
+  /* min-width: 480px; */
 }
+
 .SubItemWrapper {
   width: 100%;
   display: flex;
   flex-direction: column;
 }
 .mapView {
+
 }
+
 .map {
   width: 100%;
   height: 100%;
+}
+
+.MainItemTitleHeader{
+  padding: 5px 0px 5px 10px;
+  display: flex;
+  justify-content: flex-start;
+  width: 100%-10px;
+  background-color: #E68301;
+  color: white;
+  font-weight:bold;
+}
+
+.SubItemHeader{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  background-color: #FCB51D;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.9rem;
+  text-transform: capitalize;
+  gap: 1rem;
+}
+
+.SubItemInfoWrapper{
+  display: inline-block;
+}
+
+.MainItemInfoWrapper {
+  display: flex;
+  flex: 1;
+  justify-content: space-evenly;
+}
+
+.ListTables {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 1rem;
 }
 

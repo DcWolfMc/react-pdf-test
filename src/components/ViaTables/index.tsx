@@ -9,16 +9,17 @@ interface Props {
 
 export const ViaTables: FunctionComponent<Props> = ({ data })  => {
   const list = data.map((via) =>
-  <div>
-    <div className="SubItemHeader">{via.Nome}</div>
-    <div className="SubItemInfo">
-        <TableContents data={via} keys={KEYS_VIA}/>
+  <div className="SubItemWrapper">
+    <div className="SubItemHeader">
+      <span><b>Endereço:</b></span>
+      <span>{via.Nome.toLocaleLowerCase()}</span>
     </div>
+      <TableContents data={via} keys={KEYS_VIA}/>
   </div>
   )
   
   return (
-    <div className="SubItemInfoGroupsWrapper">
+    <div className="ListTables">
         {list}
     </div>
   );

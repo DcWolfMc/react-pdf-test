@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { callSinisterById } from "./services/callSinisterById";
+import { callSinisterById } from "./services/callSinisterByIdLocal";
 import { FormData } from "./@types/types";
 import { VerWeb } from "./VerWeb";
 

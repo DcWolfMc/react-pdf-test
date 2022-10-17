@@ -1,8 +1,6 @@
 import  { FunctionComponent } from "react";
 import { ItemGroup } from "../ItemGroup";
 
-
-// import "./styles.css"
 interface Props {
   data: any,
   keys: string[]
@@ -10,18 +8,11 @@ interface Props {
 
 export const TableContents: FunctionComponent<Props> = ({ data, keys })  => {
     const listItems = keys.map((key) =>
-    // <li key={keys.indexOf(key)}>
-    //   {key}: {data[key]? data[key]: "Não informado"}
-    // </li>
-    // <li key={keys.indexOf(key)}>
-      <ItemGroup isDate title={key.toLocaleUpperCase()} value={data[key]? data[key].toLocaleUpperCase(): "NÃO INFORMADO"}/>
-    // </li>
+      <ItemGroup isDate={false} title={key} value={data[key]? data[key]: "Não Informado"}/>
   );
   return (
-    <div className="SubItemInfoGroupsWrapper">
-      <div className="SubItemInfo">
-        {listItems}
-      </div>
+    <div className="SubItemInfoWrapper">
+      {listItems}
     </div>
   );
 };
