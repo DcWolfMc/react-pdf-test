@@ -31,6 +31,11 @@ export interface Geom{
     coordinates: number[];
     type: "Point"
 }
+export interface IncidentImages {
+    path: string;
+    uuid: string;
+    description: string;
+}
 
 export interface Vehicle {
     index?: number;
@@ -160,12 +165,6 @@ export interface stepDetailsData {
     codPEFOCE: string;
     codSIM: string;
     occuredDate: string,
-}
-
-interface IncidentImages {
-    path: string;
-    uuid: string;
-    description: string;
 }
 
 export interface attFile {

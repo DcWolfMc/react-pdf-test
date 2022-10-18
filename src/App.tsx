@@ -1,23 +1,31 @@
 import React, { useState, useEffect } from "react";
 import { callSinisterById } from "./services/callSinisterById";
-import { FormData } from "./@types/types";
+import { FormData, IncidentImages } from "./@types/types";
 import { VerWeb } from "./VerWeb";
+import { callSinisterImages } from "./services/callSinisterImages";
 
 function App() {
   const [data, setData] = useState<FormData>();
   const [showWeb, setShowWeb] = useState<boolean>(true);
   const [showPdf, setShowPdf] = useState<boolean>(false);
-
+  const [imagesArray, setimagesArray] = useState<IncidentImages[]>([]);
   useEffect(() => {
-    async function apiCall() {
-      callSinisterById()
+    async function apiCalls() {
+      callSinisterById("af0b4082-1ff7-492f-821a-ce76de979dc8")
         .then((response) => {
-          console.log(response.data);
+          console.log("sinistro: ", response.data);
           setData(response.data);
         })
         .catch((error) => console.log(error));
+
+      callSinisterImages("af0b4082-1ff7-492f-821a-ce76de979dc8").then(
+        (response) => {
+          console.log("images: ", response.data);
+          setimagesArray(response.data);
+        }
+      );
     }
-    apiCall();
+    apiCalls();
   }, []);
 
   return (

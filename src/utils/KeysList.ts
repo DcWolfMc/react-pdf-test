@@ -1,16 +1,31 @@
+export interface Location{
+    text: "Natureza"
+    |"Jurisdição"|
+    "Severidade"|
+    "Elementos Atingidas"|
+    "Quantidade de Envolvidos"|
+    "Quantidade de Veiculos"|
+    "Tipo de Cruzamento"|
+    "Superfície da Pista"|
+    "Controle de Tráfego"|
+    "Tempo"|
+    "Local"|
+    "Iluminação"|""
+}
+
 export const KEYS_LOCATION: string[] = [
     "Natureza",
-    "Jurisdição",
-    "Severidade",
-    "Elementos Atingidas",
-    "Quantidade de Envolvidos",
-    "Quantidade de Veiculos",
     "Tipo de Cruzamento",
+    "Jurisdição",
     "Superfície da Pista",
+    "Severidade",
     "Controle de Tráfego",
+    "Elementos Atingidas",
     "Tempo",
+    "Quantidade de Envolvidos",
     "Local",
-    "Iluminação"
+    "Quantidade de Veiculos",
+    "Iluminação",
 ]
 
 

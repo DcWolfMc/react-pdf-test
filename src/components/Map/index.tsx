@@ -1,5 +1,6 @@
-import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 import React, { FunctionComponent } from "react";
+import { MapContainer, Marker, TileLayer } from "react-leaflet";
+import 'leaflet/dist/leaflet.css';
 import { Geom } from "../../@types/types";
 interface Props {
   geom: Geom;
@@ -10,6 +11,13 @@ export const Map: FunctionComponent<Props> = ({ geom }) => {
       center={[geom.coordinates[1], geom.coordinates[0]]}
       dragging={false}
       scrollWheelZoom={false}
+      touchZoom={false}
+      doubleClickZoom={false}
+      
+      maxZoom={16}
+      minZoom={16}
+
+      zoomControl={false}
       zoom={16}
     >
       <TileLayer

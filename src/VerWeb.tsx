@@ -14,12 +14,10 @@ import { VictimTables } from "./components/VictimTables";
 import { VehicleTables } from "./components/VehicleTables";
 import { AgentsVehiclesTables } from "./components/AgentsVehiclesTable";
 
-
 interface Props {
   sinistro: FormData;
 }
 export const VerWeb: React.FC<Props> = ({ sinistro }) => {
-
   const createdTime = format(parseISO(sinistro.created), `dd/mm/yyyy`, {
     locale: ptBR,
   });
@@ -45,7 +43,10 @@ export const VerWeb: React.FC<Props> = ({ sinistro }) => {
   const occurred = `${occurredTime}, - ${occurredWeekDay
     .substring(0, 1)
     .toLocaleUpperCase()}${occurredWeekDay.substring(1)} às ${occurredHour}`;
-
+  const numbers: number[] = [
+    sinistro.data.driverVeiculo.length,
+    sinistro.data.driverVitima.length,
+  ];
   return (
     <div className="Container">
       <div className="MainItemWrapper">
@@ -56,63 +57,56 @@ export const VerWeb: React.FC<Props> = ({ sinistro }) => {
         </div>
 
         <div className="SubItemWrapper">
-          <div className="SubItemHeader">Localização</div>
-
-          <div className="mapView">
-            <div className="map"></div>
-            <div className="MapSubtitles"></div>
+          <div className="SubItemHeader" style={{ justifyContent: "center" }}>
+            <b>Localização</b>
           </div>
-
-          {/* <div className="SubItemInfoGroupsWrapper">
-            <div className="SubItemInfo">
-              <div className="SubItemInfoName">Natureza:</div>
-              <div className="SubItemInfoValue"></div>
+          <div className="mapView">
+            <div className="map"><Map geom={sinistro.geom}/></div>
+            <div className="MapSubtitles">
+              <ItemGroup isDate title="latitude" value={sinistro.geom.coordinates[1].toString()} />
+              <ItemGroup isDate title="longitude" value={sinistro.geom.coordinates[0].toString()} />  
             </div>
-          </div> */}
-
-          <TableContents data={sinistro.data.driverIncidenteDetails} keys={KEYS_LOCATION}/>
+          </div>
+          <TableContents
+            numbers={numbers}
+            data={sinistro.data.driverIncidenteDetails}
+            keys={KEYS_LOCATION}
+          />
         </div>
-
       </div>
 
       <div className="MainItemWrapper">
         <div className="MainItemTitleHeader">2- Vias</div>
-        <div className="MainItemInfoWrapper">Empty</div>
-        <div className="SubItemWrapper">
-          <ViaTables data={sinistro.data.driverVia}/>
-        </div>
+        <div className="MainItemInfoWrapper"></div>
+
+        <ViaTables data={sinistro.data.driverVia} />
       </div>
 
       <div className="MainItemWrapper">
         <div className="MainItemTitleHeader">3- Envolvidos</div>
-        <div className="MainItemInfoWrapper">Empty</div>
-        <div className="SubItemWrapper">
-          <VictimTables data={sinistro.data.driverVitima}/>
-        </div>
+        <div className="MainItemInfoWrapper"></div>
+        <VictimTables data={sinistro.data.driverVitima} />
       </div>
 
       <div className="MainItemWrapper">
         <div className="MainItemTitleHeader">4- Veiculos</div>
-        <div className="MainItemInfoWrapper">Empty</div>
-        <div className="SubItemWrapper">
-          <VehicleTables data={sinistro.data.driverVeiculo}/>
-        </div>
+        <div className="MainItemInfoWrapper"></div>
+        <VehicleTables data={sinistro.data.driverVeiculo} />
       </div>
 
-      {/* <div className="MainItemWrapper">
+      <div className="MainItemWrapper">
         <div className="MainItemTitleHeader">5- Anexos</div>
-        <div className="MainItemInfoWrapper">Empty</div>
-        <div className="SubItemWrapper">
-          <VehicleTables data={sinistro.data.driverVeiculo}/>
-        </div>
-      </div> */}
+        <div className="MainItemInfoWrapper"></div>
+      </div>
 
       <div className="MainItemWrapper">
         <div className="MainItemTitleHeader">6- Agentes e Viaturas</div>
-        <div className="MainItemInfoWrapper">Empty</div>
-        <div className="SubItemWrapper">
-          <AgentsVehiclesTables agents={sinistro.data.driverAgentsAndVehicles.agents} vehicles={sinistro.data.driverAgentsAndVehicles.missionCars}/>
-        </div>
+        <div className="MainItemInfoWrapper"></div>
+        <AgentsVehiclesTables
+          observations={sinistro.data.driverIncidenteDetails["Notas Gerais"]}
+          agents={sinistro.data.driverAgentsAndVehicles.agents}
+          vehicles={sinistro.data.driverAgentsAndVehicles.missionCars}
+        />
       </div>
     </div>
   );
