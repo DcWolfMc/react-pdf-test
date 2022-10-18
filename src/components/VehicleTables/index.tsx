@@ -32,10 +32,10 @@ export const VehicleTables: FunctionComponent<Props> = ({ data })  => {
         <ItemGroup title={"Marca"} value={vehicle.Marca?vehicle.Marca:"Não informado"}/>
         <ItemGroup title={"Danificado"} value={vehicle.Danificado}/>
         <ItemGroup title={"Categoria"} value={vehicle.Categoria}/>
+        <ItemGroup title={"Legalizado"} value={vehicle.Legalizado}/>
         {vehicle["Formulario de Dano"]&& 
           <>
             <ItemGroup title={"Estrutura"} value={vehicle["Formulario de Dano"].structure?vehicle["Formulario de Dano"].structure:"Não informado"}/>
-            <ItemGroup title={"Legalizado"} value={vehicle.Legalizado}/>
             <ItemGroup title={"Categoria de Dano"} value={vehicle["Formulario de Dano"].DamageType}/>
           </>
         }
