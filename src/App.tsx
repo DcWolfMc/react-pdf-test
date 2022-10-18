@@ -11,7 +11,7 @@ function App() {
   const [imagesArray, setimagesArray] = useState<IncidentImages[]>([]);
   useEffect(() => {
     async function apiCalls() {
-      callSinisterById("af0b4082-1ff7-492f-821a-ce76de979dc8")
+      callSinisterById("650dfc2c-3a3a-4419-ae91-a91a5adf0932")
         .then((response) => {
           console.log("sinistro: ", response.data);
           setData(response.data);

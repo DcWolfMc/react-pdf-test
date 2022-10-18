@@ -9,6 +9,8 @@ interface Props {
 }
 
 export const VehicleTables: FunctionComponent<Props> = ({ data })  => {
+  console.log(data)
+
   const list = data.map((vehicle, index) =>{
   return (
     <div className="SubItemWrapper" key={index}>
@@ -30,24 +32,41 @@ export const VehicleTables: FunctionComponent<Props> = ({ data })  => {
         <ItemGroup title={"Marca"} value={vehicle.Marca?vehicle.Marca:"Não informado"}/>
         <ItemGroup title={"Danificado"} value={vehicle.Danificado}/>
         <ItemGroup title={"Categoria"} value={vehicle.Categoria}/>
-        <ItemGroup title={"Estrutura"} value={vehicle["Formulario de Dano"].structure?vehicle["Formulario de Dano"].structure:"Não informado"}/>
-        <ItemGroup title={"Legalizado"} value={vehicle.Legalizado}/>
-        <ItemGroup title={"Categoria de Dano"} value={vehicle["Formulario de Dano"].DamageType}/>
+        {vehicle["Formulario de Dano"]&& 
+          <>
+            <ItemGroup title={"Estrutura"} value={vehicle["Formulario de Dano"].structure?vehicle["Formulario de Dano"].structure:"Não informado"}/>
+            <ItemGroup title={"Legalizado"} value={vehicle.Legalizado}/>
+            <ItemGroup title={"Categoria de Dano"} value={vehicle["Formulario de Dano"].DamageType}/>
+          </>
+        }
+
+        
       </div>
       <div className="DamageFormTableWrapper">
+      {vehicle["Formulario de Dano"]
+        ? 
+        <>
+          <div className="DamageFormHeader">
+            <strong>Formulário de avaria</strong>
+            {!vehicle["Formulario de Dano"].DamageFormDetails.length&&<span>  Indisponivel</span>}
+          </div>
+          <div className="DamageFormTableContent">
+          {vehicle["Formulario de Dano"].DamageFormDetails.map((item, Itemindex)=>{
+            return(<div key={Itemindex} className={`DamageTableGroup`} style={{backgroundColor:"rgba(252, 181, 29, 0.5)",}}>
+              <samp className="ItemInfoKey">{item.label}</samp>
+              <samp className="ItemInfoValue">{item.answer}</samp>
+            </div>)
+          })}
+          
+          </div>
+        </>
+        :
         <div className="DamageFormHeader">
-        <strong>Formulário de avaria</strong>
-        {!vehicle["Formulario de Dano"].DamageFormDetails.length&&<span>  Indisponivel</span>}
+          <strong>Formulário de avaria</strong>
+          <span>Indisponivel</span>
         </div>
-        <div className="DamageFormTableContent">
-        {vehicle["Formulario de Dano"].DamageFormDetails.map((item, Itemindex)=>{
-          return(<div key={Itemindex} className={`DamageTableGroup`} style={{backgroundColor:"rgba(252, 181, 29, 0.5)",}}>
-            <samp className="ItemInfoKey">{item.label}</samp>
-            <samp className="ItemInfoValue">{item.answer}</samp>
-          </div>)
-        })}
+      }
         
-        </div>
       </div>
     </div>
   );
