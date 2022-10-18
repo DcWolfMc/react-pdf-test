@@ -9,8 +9,6 @@ interface Props {
 }
 
 export const VehicleTables: FunctionComponent<Props> = ({ data })  => {
-  console.log(data)
-
   const list = data.map((vehicle, index) =>{
   return (
     <div className="SubItemWrapper" key={index}>

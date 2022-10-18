@@ -18,10 +18,10 @@ interface Props {
   sinistro: FormData;
 }
 export const VerWeb: React.FC<Props> = ({ sinistro }) => {
-  const createdTime = format(parseISO(sinistro.created), `dd/mm/yyyy`, {
+  const createdTime = format(parseISO(sinistro.created), `dd/MM/yyyy`, {
     locale: ptBR,
   });
-  const createdHour = format(parseISO(sinistro.created), `HH:MM`, {
+  const createdHour = format(parseISO(sinistro.created), `HH:mm`, {
     locale: ptBR,
   });
   const createdWeekDay = format(parseISO(sinistro.created), `EEEE`, {
@@ -31,10 +31,10 @@ export const VerWeb: React.FC<Props> = ({ sinistro }) => {
     .substring(0, 1)
     .toLocaleUpperCase()}${createdWeekDay.substring(1)} às ${createdHour}`;
 
-  const occurredTime = format(parseISO(sinistro.occurred_from), "dd/mm/yyyy", {
+  const occurredTime = format(parseISO(sinistro.occurred_from), "dd/MM/yyyy", {
     locale: ptBR,
   });
-  const occurredHour = format(parseISO(sinistro.occurred_from), `HH:MM`, {
+  const occurredHour = format(parseISO(sinistro.occurred_from), `HH:mm`, {
     locale: ptBR,
   });
   const occurredWeekDay = format(parseISO(sinistro.occurred_from), `EEEE`, {

@@ -34,6 +34,7 @@
   width: 48rem;
   margin-top: 4rem;
   flex: 1;
+  min-height: '100vh';
 }
 .Container {
   width: 100%;

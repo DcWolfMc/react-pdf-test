@@ -3,6 +3,8 @@ import { callSinisterById } from "./services/callSinisterById";
 import { FormData, IncidentImages } from "./@types/types";
 import { VerWeb } from "./VerWeb";
 import { callSinisterImages } from "./services/callSinisterImages";
+import { VerPdf } from "./VerPdf";
+import { PDFViewer } from "@react-pdf/renderer";
 
 function App() {
   const [data, setData] = useState<FormData>();
@@ -51,14 +53,26 @@ function App() {
           >
             {showPdf ? "Ocultar PDF" : "Ver PDF"}
           </button>
-
-          <button className="MenuButton">PDF Download</button>
+          
+          {data && (
+            // <PDFDownloadLink  document={ <VerPdf sinistro={data} />} fileName='sinistro.pdf'>
+              <button className="MenuButton">PDF Download</button>
+            // </PDFDownloadLink>
+          )}
+          
+          
         </nav>
       </div>
+
       {data && (
-        <div className="Content">
+        <div className="Content" style={{minWidth: '100vh'}}>
           {showWeb && <VerWeb sinistro={data} />}
-          {showPdf && <p>PDF page</p>}
+          {showPdf && (
+            // <PDFViewer>
+              <VerPdf sinistro={data} />
+            // </PDFViewer>
+          )
+          }
         </div>
       )}
     </div>
