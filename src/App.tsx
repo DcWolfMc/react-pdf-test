@@ -4,31 +4,37 @@ import { FormData, IncidentImages } from "./@types/types";
 import { VerWeb } from "./VerWeb";
 import { callSinisterImages } from "./services/callSinisterImages";
 import { VerPdf } from "./VerPdf";
-import { PDFViewer } from "@react-pdf/renderer";
-
+import { PDFViewer } from '@react-pdf/renderer';
+import {JsonData} from "./data"
+import { PDF } from "./pdf";
 function App() {
-  const [data, setData] = useState<FormData>();
+  const [data, setData] = useState<any>(JsonData);
   const [showWeb, setShowWeb] = useState<boolean>(true);
   const [showPdf, setShowPdf] = useState<boolean>(false);
   const [imagesArray, setimagesArray] = useState<IncidentImages[]>([]);
-  useEffect(() => {
-    async function apiCalls() {
-      callSinisterById("650dfc2c-3a3a-4419-ae91-a91a5adf0932")
-        .then((response) => {
-          console.log("sinistro: ", response.data);
-          setData(response.data);
-        })
-        .catch((error) => console.log(error));
+  // useEffect(() => {
+  //   async function apiCalls() {
+  //     callSinisterById("650dfc2c-3a3a-4419-ae91-a91a5adf0932")
+  //       .then((response) => {
+  //         console.log("sinistro: ", response.data);
+  //         setData(response.data);
+  //       })
+  //       .catch((error) => {
+  //         console.log("callSinisterById error:",error)
+  //         setData(JsonData)
+  //       });
 
-      callSinisterImages("af0b4082-1ff7-492f-821a-ce76de979dc8").then(
-        (response) => {
-          console.log("images: ", response.data);
-          setimagesArray(response.data);
-        }
-      );
-    }
-    apiCalls();
-  }, []);
+  //     callSinisterImages("af0b4082-1ff7-492f-821a-ce76de979dc8")
+  //     .then((response) => {
+  //         console.log("images: ", response.data);
+  //         setimagesArray(response.data);
+  //       }
+  //     ).catch((error)=>{
+  //       console.log("callSinisterImages error:",error)
+  //     });
+  //   }
+  //   apiCalls();
+  // }, []);
 
   return (
     <div className="App">
@@ -67,12 +73,13 @@ function App() {
       {data && (
         <div className="Content" style={{minWidth: '100vh'}}>
           {showWeb && <VerWeb sinistro={data} />}
-          {showPdf && (
-            // <PDFViewer>
-              <VerPdf sinistro={data} />
-            // </PDFViewer>
-          )
-          }
+          {/* {showPdf && ( */}
+             {/* <PDFViewer> */}
+              {/* <PDF/> */}
+              {/* <VerPdf sinistro={data} /> */}
+             {/* </PDFViewer> */}
+          {/* )
+          } */}
         </div>
       )}
     </div>

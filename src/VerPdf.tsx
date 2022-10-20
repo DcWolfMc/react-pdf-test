@@ -3,8 +3,6 @@ import { FormData } from "./@types/types";
 import { format, parseISO } from "date-fns";
 import { ptBR } from "date-fns/locale";
 import { ItemGroup } from "./components/ItemGroup";
-import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
-import "./styles.css";
 import { Map } from "./components/Map";
 import { TableContents } from "./components/TableContents";
 
